@@ -1,0 +1,24 @@
+name: Testes da Calculadora
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  executar-testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: pip install pytest
+
+      - name: Executar testes
+        run: pytest
